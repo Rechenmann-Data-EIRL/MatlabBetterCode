@@ -58,18 +58,18 @@ class FindFunctionParametersTest(unittest.TestCase):
 
     def test_number_of_lines_for_function(self):
         with open("tests/resources/simple_empty_function.m", "r") as file:
-            nb_lines = core.core.find_number_of_lines_for_function(file.read())
-            self.assertEqual(2, nb_lines)
+            line_params = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(2, line_params["functional_length"])
 
     def test_number_of_lines_for_square_function(self):
         with open("tests/resources/simple_square_function.m", "r") as file:
-            nb_lines = core.core.find_number_of_lines_for_function(file.read())
-            self.assertEqual(3, nb_lines)
+            line_params = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(3, line_params["functional_length"])
 
     def test_number_of_lines_for_function_without_end(self):
         with open("tests/resources/simple_function_without_end.m", "r") as file:
-            nb_lines = core.core.find_number_of_lines_for_function(file.read())
-            self.assertEqual(2, nb_lines)
+            line_params = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(2, line_params["functional_length"])
 
 
 if __name__ == '__main__':
