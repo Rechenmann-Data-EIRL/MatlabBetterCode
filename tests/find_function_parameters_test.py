@@ -48,5 +48,30 @@ class FindFunctionParametersTest(unittest.TestCase):
         self.assertEqual(["argument1", "argument2"], parameters["arguments"])
         self.assertEqual(["output1", "output2"], parameters["outputs"])
 
+    def test_if_line_is_function(self):
+        string = "function [output1, output2  ] = testFunction  (argument1, argument2)"
+        self.assertEqual(True, core.core.is_line_function(string))
+
+    def test_if_line_is_not_a_function(self):
+        string = "[output1, output2  ] = testFunction  (argument1, argument2)"
+        self.assertEqual(False, core.core.is_line_function(string))
+
+    def test_number_of_lines_for_function(self):
+        with open("resources/simple_empty_function.m", "r") as file:
+            nb_lines = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(2, nb_lines)
+
+    def test_number_of_lines_for_square_function(self):
+        with open("resources/simple_square_function.m", "r") as file:
+            nb_lines = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(3, nb_lines)
+
+    def test_number_of_lines_for_function_without_end(self):
+        with open("resources/simple_function_without_end.m", "r") as file:
+            nb_lines = core.core.find_number_of_lines_for_function(file.read())
+            self.assertEqual(2, nb_lines)
+
+
+
 if __name__ == '__main__':
     unittest.main()
