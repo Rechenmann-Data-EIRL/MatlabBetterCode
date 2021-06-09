@@ -7,7 +7,7 @@ class FunctionTestCase(unittest.TestCase):
     def test_creation(self):
         size = OperationSize(start=0, end=15, length=14, functional_length=7)
         function = core.function.Function(size, name="functionName", arguments=["arg1", "arg2"], outputs=[],
-                                          operations=[], parent=None)
+                                          parent=None)
         self.assertEqual("functionName", function.name)
         self.assertEqual(["arg1", "arg2"], function.arguments)
         self.assertEqual([], function.outputs)
@@ -34,8 +34,8 @@ class FunctionTestCase(unittest.TestCase):
     def test_add_operation(self):
         size1 = OperationSize(start=0, end=0, length=1, functional_length=1)
         size2 = OperationSize(start=1, end=14, length=14, functional_length=7)
-        function = core.function.Function(size1, name="functionName", operations=[], parent=None)
-        operation = core.function.Function(size2, name="nestedFunction", operations=[], parent=function)
+        function = core.function.Function(size1, name="functionName", parent=None)
+        operation = core.function.Function(size2, name="nestedFunction", parent=function)
         function.add_operation(operation)
         self.assertEqual("functionName", function.name)
         self.assertEqual(0, function.size.start)

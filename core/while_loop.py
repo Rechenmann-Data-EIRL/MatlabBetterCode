@@ -5,11 +5,9 @@ from core.size import OperationSize
 
 
 class WhileLoop(Operation):
-    def __init__(self, condition, size, operations=[], parent=None):
-        super().__init__(size, operations, parent)
+    def __init__(self, condition, size, parent=None):
+        super().__init__(size, parent)
         self.condition = condition
-        self.operations = operations
-        self.parent = parent
 
     @staticmethod
     def create_from_line(line, parent, line_index):

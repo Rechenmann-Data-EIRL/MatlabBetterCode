@@ -4,15 +4,11 @@ from core.size import OperationSize
 
 
 class Function(Operation):
-    def __init__(self, size, name, arguments=[], outputs=[], operations=[], parent=None):
-        super().__init__(size, operations, parent)
+    def __init__(self, size, name, arguments=[], outputs=[], parent=None):
+        super().__init__(size, parent)
         self.name = name
         self.arguments = arguments
         self.outputs = outputs
-        self.operations = operations
-        self.parent = parent
-
-
 
     @staticmethod
     def is_line_function(line):

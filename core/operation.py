@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Operation(ABC):
-    def __init__(self, size, operations=[], parent=None):
+    def __init__(self, size, parent=None):
         self.size = size
         self.parent = parent
-        self.operations = operations
+        self.operations = []
 
     @staticmethod
     @abstractmethod

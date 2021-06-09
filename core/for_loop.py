@@ -5,12 +5,10 @@ from core.size import OperationSize
 
 
 class ForLoop(Operation):
-    def __init__(self, index_name, values, size, operations=[], parent=None):
-        super().__init__(size, operations, parent)
+    def __init__(self, index_name, values, size, parent=None):
+        super().__init__(size, parent)
         self.index_name = index_name
         self.values = values
-        self.operations = operations
-        self.parent = parent
 
     @staticmethod
     def create_from_line(line, parent, line_index):
