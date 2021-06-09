@@ -1,7 +1,7 @@
 import re
 
 from core.operation import Operation
-from core.size import OperationSize
+from core.operation_size import OperationSize
 
 
 class ForLoop(Operation):

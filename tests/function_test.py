@@ -1,11 +1,11 @@
 import unittest
 import core.function
-from core.size import OperationSize
+from core.operation_size import OperationSize
 
 
 class FunctionTestCase(unittest.TestCase):
     def test_creation(self):
-        size = OperationSize(start=0, end=15, length=14, functional_length=7)
+        size = OperationSize(start=0, end=15, functional_length=7)
         function = core.function.Function(size, name="functionName", arguments=["arg1", "arg2"], outputs=[],
                                           parent=None)
         self.assertEqual("functionName", function.name)
@@ -13,7 +13,7 @@ class FunctionTestCase(unittest.TestCase):
         self.assertEqual([], function.outputs)
         self.assertEqual(0, function.size.start)
         self.assertEqual(15, function.size.end)
-        self.assertEqual(14, function.size.length)
+        self.assertEqual(16, function.size.length)
         self.assertEqual(7, function.size.functional_length)
         self.assertEqual(0, len(function.operations))
         self.assertEqual(None, function.parent)
@@ -32,8 +32,8 @@ class FunctionTestCase(unittest.TestCase):
         self.assertEqual(None, function.parent)
 
     def test_add_operation(self):
-        size1 = OperationSize(start=0, end=0, length=1, functional_length=1)
-        size2 = OperationSize(start=1, end=14, length=14, functional_length=7)
+        size1 = OperationSize(start=0, end=0, functional_length=1)
+        size2 = OperationSize(start=1, end=14, functional_length=7)
         function = core.function.Function(size1, name="functionName", parent=None)
         operation = core.function.Function(size2, name="nestedFunction", parent=function)
         function.add_operation(operation)

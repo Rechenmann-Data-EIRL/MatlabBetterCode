@@ -1,12 +1,12 @@
 import unittest
 
 import core.while_loop
-from core.size import OperationSize
+from core.operation_size import OperationSize
 
 
 class WhileLoopTestCase(unittest.TestCase):
     def test_creation(self):
-        size = OperationSize(start=0, end=15, length=14, functional_length=7)
+        size = OperationSize(start=0, end=15, functional_length=7)
         loop = core.while_loop.WhileLoop(condition="a == b", size=size, parent=None)
         self.assertEqual("a == b", loop.condition)
         self.assertEqual(size, loop.size)
