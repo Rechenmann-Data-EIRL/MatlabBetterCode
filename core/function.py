@@ -17,7 +17,7 @@ class Function(Operation):
     @staticmethod
     def create_from_line(line, parent, line_index):
         parameters = find_function_parameters_from_line(line)
-        return Function(OperationSize(start=line_index), parameters["name"],  parameters["arguments"], parameters["outputs"])
+        return Function(OperationSize(start=line_index, end=line_index), parameters["name"],  parameters["arguments"], parameters["outputs"])
 
 
 def find_function_parameters_from_line(line):

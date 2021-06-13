@@ -13,4 +13,8 @@ class WhileLoop(Operation):
     def create_from_line(line, parent, line_index):
         patterns_to_remove = r"[\s]|while|\..."
         cleaned_line = re.sub(patterns_to_remove, "", line)
-        return WhileLoop(cleaned_line, OperationSize())
+        return WhileLoop(cleaned_line, OperationSize(start=line_index, end=line_index))
+
+    @staticmethod
+    def is_line_while_loop(line):
+        return "while" in line

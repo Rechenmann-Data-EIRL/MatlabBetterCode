@@ -15,4 +15,8 @@ class ForLoop(Operation):
         patterns_to_remove = r"[\s\[\]\)]|for|\..."
         cleaned_line = re.sub(patterns_to_remove, "", line)
         split_line = cleaned_line.split("=")
-        return ForLoop(split_line[0], split_line[1], OperationSize())
+        return ForLoop(split_line[0], split_line[1], OperationSize(start=line_index, end=line_index))
+
+    @staticmethod
+    def is_line_for_loop(line):
+        return "for" in line
