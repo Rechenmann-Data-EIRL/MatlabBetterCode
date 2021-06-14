@@ -1,14 +1,19 @@
 import re
-from core.operation import Operation
-from core.operation_size import OperationSize
+from core.operation.operation import Operation
+from core.operation.operation_size import OperationSize
 
 
 class Function(Operation):
-    def __init__(self, size, name, arguments=[], outputs=[], parent=None):
+    def __init__(self, size, name, arguments=None, outputs=None, parent=None):
         super().__init__(size, parent)
+        if arguments is None:
+            arguments = []
+        if outputs is None:
+            outputs = []
         self.name = name
         self.arguments = arguments
         self.outputs = outputs
+        self.functions = []
 
     @staticmethod
     def is_line_function(line):
@@ -17,7 +22,16 @@ class Function(Operation):
     @staticmethod
     def create_from_line(line, parent, line_index):
         parameters = find_function_parameters_from_line(line)
-        return Function(OperationSize(start=line_index, end=line_index), parameters["name"],  parameters["arguments"], parameters["outputs"])
+        return Function(OperationSize(start=line_index, end=line_index), parameters["name"],  parameters["arguments"],
+                        parameters["outputs"])
+
+    def add_operation(self, operation):
+        if isinstance(operation, Function):
+            self.functions.append(operation)
+            self.size.end += operation.size.length
+            self.size.length += operation.size.length
+        else:
+            super().add_operation(operation)
 
 
 def find_function_parameters_from_line(line):

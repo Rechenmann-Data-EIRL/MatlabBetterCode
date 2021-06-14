@@ -1,6 +1,6 @@
-from core.for_loop import ForLoop
-from core.function import Function
-from core.while_loop import WhileLoop
+from core.operation.for_loop import ForLoop
+from core.operation.function import Function
+from core.operation.while_loop import WhileLoop
 
 
 class OperationFactory:

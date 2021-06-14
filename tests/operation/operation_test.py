@@ -1,10 +1,10 @@
 import unittest
 
-from core.operation import Operation
-from core.operation_factory import OperationFactory
+from core.operation.operation import Operation
+from core.operation.operation_factory import OperationFactory
 
 
-class FindFileOperationsTestCase(unittest.TestCase):
+class OperationTestCase(unittest.TestCase):
 
     def test_number_of_lines_for_function(self):
         with open("tests/resources/simple_empty_function.m", "r") as file:
@@ -39,8 +39,9 @@ class FindFileOperationsTestCase(unittest.TestCase):
             self.assertEqual(0, operations.size.start, 'Start indexes are not equal')
             self.assertEqual(10, operations.size.end, 'End indexes are not equal')
             self.assertEqual(11, operations.size.length, 'Length are not equal')
-            self.assertEqual(9, operations.size.functional_length, 'Functional length are not equal')
-            self.assertEqual(2, len(operations.operations), 'Number of operations found are not equal')
+            self.assertEqual(6, operations.size.functional_length, 'Functional length are not equal')
+            self.assertEqual(1, len(operations.operations), 'Number of operations found are not equal')
+            self.assertEqual(1, len(operations.functions), 'Number of functions found are not equal')
 
 
 if __name__ == '__main__':

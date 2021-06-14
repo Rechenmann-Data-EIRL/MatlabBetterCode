@@ -1,9 +1,9 @@
 import unittest
 
-from core.for_loop import ForLoop
-from core.function import Function
-from core.operation_factory import OperationFactory
-from core.while_loop import WhileLoop
+from core.operation.for_loop import ForLoop
+from core.operation.function import Function
+from core.operation.operation_factory import OperationFactory
+from core.operation.while_loop import WhileLoop
 
 
 class OperationFactoryTestCase(unittest.TestCase):

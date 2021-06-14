@@ -1,7 +1,7 @@
 import re
 
-from core.operation import Operation
-from core.operation_size import OperationSize
+from core.operation.operation import Operation
+from core.operation.operation_size import OperationSize
 
 
 class WhileLoop(Operation):
